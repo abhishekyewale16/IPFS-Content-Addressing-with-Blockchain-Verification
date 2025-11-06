@@ -1,4 +1,4 @@
-# BlockChain-Based Document Verification with IPFS
+# IPFS Content Addressing With Blockchain Verification
 
 This project aims to create a secure and decentralized system for document verification using Blockchain and InterPlanetary File System (IPFS) technologies. The system stores the hash of the documents in the Blockchain network and the documents themselves in the IPFS network. This ensures that the documents cannot be tampered with or altered, and they can be easily retrieved and verified by authorized parties.
 
@@ -19,11 +19,10 @@ This project aims to create a secure and decentralized system for document verif
 ## Installation
 
 1. Clone this repository: 
-   ``https://github.com/DevAloshe/BlockChain-Based-Document-Verfication-With-IPFS.git``
-
+https://github.com/abhishekyewale16/IPFS-Content-Addressing-with-Blockchain-Verification.git
 
 2. Install the required packages:
-  ``cd BlockChain-Based-Document-Verfication-With-IPFS``
+  ``cd IPFS-content-Addressing-with-Blockchain-Verificaion``
   `` npm install``
 
 4. deploy the contract.sol using remixe online ide
