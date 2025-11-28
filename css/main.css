@@ -1,18 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,500;1,700&family=Rubik+Glitch&family=Rubik+Moonrocks&family=Ubuntu&display=swap");
 
 :root {
-  --main-color: #cb3066;
-  --second-color: #16bffd;
-  --box-shadow: 0 0 5px rgb(33, 3, 3);
+  --main-color: #6366f1;
+  --second-color: #06b6d4;
+  --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
   --border-color: 1px solid #c3c3c361;
-  --dark: #1f2022;
+  --dark: #1a1a2e;
   --light: rgb(157, 157, 157);
   --white: rgba(255, 255, 255, 0.925);
-  --border-radius: 10px;
-  --inputs-background: #121212;
-  --boxes-color: #252024 !important;
-  --nav-background: #1f2022;
-  --team-box-color: #151d20;
+  --border-radius: 12px;
+  --inputs-background: #0f0f23;
+  --boxes-color: #1e1e2e !important;
+  --nav-background: #0f0f23;
+  --team-box-color: #16213e;
 }
 
 button {
@@ -140,6 +140,35 @@ body {
 }
 .navbar-dark {
   background: var(--nav-background) !important;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+}
+.navbar-brand {
+  font-weight: 800;
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+.nav-link {
+  font-weight: 500;
+  transition: color 0.3s ease;
+  position: relative;
+}
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
+.nav-link:hover::after {
+  width: 80%;
 }
 
 /* ------------------------------------------------------------ */
@@ -180,14 +209,19 @@ body {
 }
 .home h1 {
   font-size: 3.4rem;
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+  font-weight: 700;
+  letter-spacing: -0.5px;
 }
 .home_text {
   color: var(--main-color);
+  font-weight: 800;
 }
 .home .para {
   font-size: 1.2rem;
-  line-height: 2;
+  line-height: 1.8;
   color: var(--white);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
 }
 .home-btn {
   color: #004066;
@@ -202,11 +236,22 @@ section {
 }
 .main-header-section {
   border-left: 5px solid var(--main-color);
-  padding-left: 10px;
+  padding-left: 15px;
   font-size: larger;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 .information h4 {
   text-transform: uppercase;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.information .col-lg-4 {
+  transition: transform 0.3s ease;
+}
+.information .col-lg-4:hover {
+  transform: translateY(-8px);
 }
 
 /* Upload */
@@ -251,13 +296,15 @@ input,
 
 .main-button {
   text-transform: capitalize;
-  box-shadow: var(--box-shadow);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
   border-radius: 35px;
   height: 40px;
   width: 90px;
   color: var(--white);
-  background: var(--main-color);
-  font-weight: 500;
+  background: linear-gradient(135deg, var(--main-color), var(--second-color));
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
 }
 
 .upload-button {
@@ -265,8 +312,8 @@ input,
   height: 50px;
 }
 .main-button:hover {
-  box-shadow: var(--box-shadow);
-  scale: 1.04;
+  box-shadow: 0 6px 20px rgba(99, 102, 241, 0.5);
+  transform: translateY(-2px);
 }
 
 .box {
@@ -276,8 +323,9 @@ input,
   font-weight: 600;
   color: var(--white);
   background: var(--boxes-color);
-  border-radius: 10px;
-  box-shadow: var(--box-shadow);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(99, 102, 241, 0.2);
 }
 .wallet-status {
   justify-content: end;
