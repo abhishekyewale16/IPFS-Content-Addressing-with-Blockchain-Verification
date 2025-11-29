@@ -388,6 +388,8 @@ function print_verification_info(result, is_verified) {
   //Default Image for not Verified Docunets
   document.getElementById("student-document").src = "./files/notvalid.svg";
   $("#loader").hide();
+  // Show preview box
+  $("#preview-box").removeClass("d-none");
   // when document not verfied
   if (!is_verified) {
     // document.getElementById('download-document').classList.add('d-none')
@@ -443,11 +445,14 @@ function print_verification_info(result, is_verified) {
     $("#blockNumber").html(
       `<span class="text-info"><i class="fa-solid fa-cube"></i></span> ${result[0]}`
     );
-    document.getElementById(
-      "student-document"
-    ).src = `https://ipfs.io/ipfs/${result[3]}`;
-    document.getElementById("download-document").href =
-      document.getElementById("student-document").src;
+    const studentDoc = document.getElementById("student-document");
+    studentDoc.src = `https://ipfs.io/ipfs/${result[3]}`;
+    // Add error handler for IPFS load failure
+    studentDoc.onerror = function() {
+      this.onerror = null; // Prevent infinite loop
+      this.src = './files/approved.png';
+    };
+    document.getElementById("download-document").href = studentDoc.src;
     $(".transaction-status").show();
   }
 }
