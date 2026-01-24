@@ -460,23 +460,38 @@ function show_txInfo() {
   $(".transaction-status").removeClass("d-none");
 }
 async function get_ethBalance() {
-  try {
-    await web3.eth.getBalance(window.userAddress, function (err, balance) {
-      if (err === null) {
-        $("#userBalance").html(
-          "Balance: <i class='fa-brands fa-gg-circle mx-2 text-danger'></i>" +
-          web3.utils.fromWei(balance).substr(0, 6) +
-          " ETH"
-        );
-      } else {
-        console.error("Balance error:", err);
-        $("#userBalance").html("Balance: <span class='text-warning'>n/a</span>");
-      }
-    });
-  } catch (error) {
+ // Original problematic call (hypothetical, based on error message)
+// web3.eth.getBalance(accountAddress, function (err, balance) { /* ... */ });
+
+// Corrected usage with Promises:
+try {
+    const balance = await web3.eth.getBalance(window.userAddress); // Assumes accountAddress is defined
+    $("#userBalance").html(
+        "Balance: <i class='fa-brands fa-gg-circle mx-2 text-danger'></i>" +
+        web3.utils.fromWei(balance).substr(0, 6) +
+        " ETH"
+    );
+} catch (error) {
     console.error("get_ethBalance error:", error);
     $("#userBalance").html("Balance: <span class='text-warning'>n/a</span>");
-  }
+}
+
+// If you must use a callback (less common in modern Web3.js for async calls),
+// ensure the `blockNumberOrTag` is provided before the callback, or omitted
+// to default to 'latest'.
+// web3.eth.getBalance(accountAddress, 'latest', function (err, balance) {
+//   if (err === null) {
+//     $("#userBalance").html(
+//       "Balance: <i class='fa-brands fa-gg-circle mx-2 text-danger'></i>" +
+//       web3.utils.fromWei(balance).substr(0, 6) +
+//       " ETH"
+//     );
+//   } else {
+//     console.error("Balance error:", err);
+//     $("#userBalance").html("Balance: <span class='text-warning'>n/a</span>");
+//   }
+// });
+
 }
 
 if (window.ethereum) {
